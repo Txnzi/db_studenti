@@ -13,7 +13,7 @@ class Studenti:
 
 
     def __init__(self,id: int,nome:str,cognome: str,eta: int,voti: list[int]):
-        self.id= id
+        self.__id= id
         self.nome= nome
         self.cognome= cognome
         self.eta= eta
