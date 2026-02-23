@@ -4,6 +4,7 @@ class StudentService:
     
 
     def leggi(db : StudentDatabase):
+        print()
         pass
 
 
