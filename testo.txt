@@ -1,0 +1,32 @@
+Creare un sistema di gestione per simulare un "database" di studenti registrati all'università e che esegua le
+operazioni CRUD su un file JSON contenente i dati di degli studenti.
+C = Create
+R = Retrieve
+U = Update
+D = Delete
+
+Il progetto deve seguire la struttura seguente:
+
+db_studenti/
+├── models/
+│   └── student.py
+├── database/
+│   └── student_database.py
+├── services/
+│   └── student_service.py
+├── data/
+│   └── students.json
+├── main.py
+└── tests/
+
+Dove:
+    models/     è la cartella dove abbiamo le classi che rappresentano i dati
+
+    database/   è la cartella dove abbiamo le classi che gestiscono la comunicazione con il database per un certo tipo
+                di dato
+
+    services/   è la cartella dove abbiamo le clasis che gestiscono la logica di modifica del database
+
+    data/       indovina un po' cosa c'è dentro?
+
+    tests/      leggi sopra
