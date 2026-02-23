@@ -1,5 +1,9 @@
 [
     {
-        "a":null
+        "id": 1,
+        "nome": "Gianluca",
+        "cognome": "Amato",
+        "eta": 27,
+        "voti": [22, 28, 29, 18]
     }
 ]
