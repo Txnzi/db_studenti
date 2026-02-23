@@ -20,4 +20,5 @@ class StudentService:
 
 
     def leggi_dettaglio(db : StudentDatabase, id : int):
+        print()
         pass
