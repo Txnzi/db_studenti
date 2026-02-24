@@ -3,9 +3,14 @@ from models.studenti import Studenti
 class StudentService:
     
 
-    def leggi(db : StudentDatabase):       #calab
-        print()
-        pass
+    def leggi(db : StudentDatabase):
+        tmp=[]       #calab
+        db.apri()
+        for stud in db.file:
+            tmp.append({"id" : stud.id,"nome" : stud.nome,"cognome" : stud.cognome})
+        return tmp
+
+           
 
 
     def scrivi(db : StudentDatabase, nuovo_studente : Studenti):      #txnzy
@@ -16,10 +21,19 @@ class StudentService:
         pass
 
 
-    def elimina(db : StudentDatabase, id : int):    #calab
-        pass
+    def elimina(db : StudentDatabase, id_stud : int):    #calab
+        db.apri()
+        for stud in db.file:
+            if stud.id == id_stud:
+                del stud
+                return True
+        return False
 
   
-    def leggi_dettaglio(db : StudentDatabase, id : int):   #calab
-        print() 
-        pass
+    def leggi_dettaglio(db : StudentDatabase, id_stud : int):   #calab
+        db.apri()
+        for stud in db.file:
+            if stud.id == id_stud:
+                studente_cercato={"id" : stud.id, "nome" : stud.nome, "cognome" : stud.cognome, "eta" : stud.eta, "voti" : stud.voti}
+                return studente_cercato
+        return None
