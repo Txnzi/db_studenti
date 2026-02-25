@@ -3,7 +3,18 @@ from models.studenti import Studenti
 class StudentService:
     
 
-    def leggi(db : StudentDatabase):
+    def creazione_studente(n: int):
+        valutazioni=[ int(input("inserisci voto: ")) for _ in range(n) ]
+
+        student = {
+          "nome" : input("inserisci nuovo nome: "),
+          "cognome" : input("inserisci nuovo cognome dello studente:  "),
+          "eta" : input("inserisci nuova eta studente: "),
+          "voti" : valutazioni
+        }
+        return student
+
+    def leggi(db: StudentDatabase):
         tmp=[]       #calab
         db.apri()
         for stud in db.file:
@@ -13,11 +24,16 @@ class StudentService:
            
 
 
-    def scrivi(db : StudentDatabase, sd : dict):      #txnzy
+    def scrivi(db: StudentDatabase, sd: dict[str, str | int | list[int]]):      #txnzy
         db.apri()
-        nuovo_studente=Studenti(sd["id"],sd["nome"],sd["cognome"],sd["eta"],sd["voti"])
+        tmp = {stud.id for stud in db.file}
+        if sd["id"] in tmp or not isinstance(sd["voti"], list):
+            return False
+        
+        nuovo_studente=Studenti(sd["id"], sd["nome"].strip(), sd["cognome"].strip(), int(sd["eta"]), sd["voti"])
         db.file.append(nuovo_studente)
         db.chiudi()
+        return True
 
 
     def modifica(student : dict, db : StudentDatabase, id_stud : int):   #txnzy
